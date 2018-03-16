@@ -3,33 +3,26 @@
 const Hash = require('../lib/hash-table');
 require('jest');
 
-let one = {
-  key: 'dog',
-  value: 'argument',
-};
+let one = {key: 'tim', val: '1'};
+let two = {key: 'dog', val: '22'};
+let three = {key: 'webstorm', val: '222'};
 
-let two = {
-  key: 'tim',
-  value: 'person',
-};
-
-
-describe('HashKey Method', () => {
-  let test = new Hash(5);
-  test.set(one.key, one.value);
-  test.set(two.key, two.value);
+describe('HashKey testing to see if it works', () => {
+  let hashTable = new Hash(5);
 
   describe('Valid input', () => {
-    it('Should create a key number representing the key', () => {
-      expect(test.hashKey(one.key)).toEqual(4);
+    it('Should create a hash number representing the key', () => {
+      expect(hashTable.hashKey(one.key)).toEqual(0);
+      expect(hashTable.hashKey(two.key)).toEqual(4);
+      expect(hashTable.hashKey(three.key)).toEqual(3);
     });
   });
   describe('Invalid input', () => {
-    it('Should return an error if no key is provided', () => {
-      expect(test.hashKey()).toMatch(/Error/);
+    it('Should return an error if no key is passed', () => {
+      expect(hashTable.hashKey()).toMatch(/Error/);
     });
     it('Should return an error if key is not a string', () => {
-      expect(test.hashKey(1)).toMatch(/Error/);
+      expect(hashTable.hashKey(1)).toMatch(/Error/);
     });
   });
 });

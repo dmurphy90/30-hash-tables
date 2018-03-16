@@ -5,17 +5,17 @@ require('jest');
 
 let one = {
   key: 'dog',
-  value: 'argument',
+  value: '123',
 };
 
 let two = {
   key: 'tim',
-  value: 'person',
+  value: '456',
 };
 
 let three = {
   key: 'rain',
-  value: 'wet',
+  value: '789',
 };
 
 describe('Get Method', () => {
@@ -29,7 +29,7 @@ describe('Get Method', () => {
       expect(test.get('dog')).toBeInstanceOf(Object);
     });
     it('Should return the node belonging to the key', () => {
-      expect(test.get('dog').value).toBe('argument');
+      expect(test.get('dog').value).toBe('123');
     });
     it('Should iterate through a linked list to find the key', () => {
       expect(test.memory[4].head.key).toBe('dog');

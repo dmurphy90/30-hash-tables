@@ -11,7 +11,7 @@ class SLL {
     this.head = null;
   }
 
-  insertEnd(key, value) {
+  insertEnd(key, value) { // Big O: best case O(1) if no other node exists, worst case O(n), iterates to end of list before creating
     if(!value) return null;
     if(!key) return null;
     let node = new Node(key, value);
@@ -21,6 +21,7 @@ class SLL {
     }
     for(var itr = this.head; itr.next; itr = itr.next);
     itr.next = node;
+    // this.listLength ++;
     return this;
   }
 }

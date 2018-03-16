@@ -4,13 +4,13 @@ const SLL = require('./sll');
 
 class HashTable {
   constructor(size) {
-    this.size = size || 5;
+    this.size = size || 5; 
     this.memory = [...Array(this.size)];
   }
 
   hashKey(key) {
     if(!key) return 'Error, key missing';
-    if(typeof key !== 'string') return 'Error, key must be a string';
+    if(typeof key !== 'string') return 'Error, key needs to be a string';
 
     let hash = key.split('').reduce((a, b) => a + b.charCodeAt(0), 0) % this.size;
 
@@ -31,13 +31,12 @@ class HashTable {
 
   get(key) {
     if(!key) return 'Error, key missing';
-    if(typeof key !== 'string') return 'Error, key must be a string';
+    if(typeof key !== 'string') return 'Error, key needs to be a string';
 
     let hash = this.hashKey(key);
     let index = this.memory[hash];
 
     let curr = index.head;
-
     while(curr) {
       if(curr.key === key) return curr;
       curr = curr.next;
@@ -47,7 +46,7 @@ class HashTable {
 
   remove(key) {
     if(!key) return 'Error, key missing';
-    if(typeof key !== 'string') return 'Error, key must be a string';
+    if(typeof key !== 'string') return 'Error, key needs to be a string';
 
     let index = this.memory[this.hashKey(key)];
     if(!index.head) return 'Error, this key does not exist in table';
